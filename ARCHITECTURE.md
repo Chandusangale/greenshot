@@ -91,6 +91,8 @@ public interface IDestination : IDisposable, IComparable
 }
 ```
 
+**Note**: `GetMenuItem` creates and returns a menu item that represents this destination in the UI.
+
 ### 3. Service Locator Pattern
 
 Greenshot uses a simple **Service Locator** pattern for dependency management.
@@ -256,8 +258,8 @@ Developers can extend Greenshot through:
 2. **Custom Destinations**: Implement `IDestination` to add new export targets
 3. **Custom Processors**: Implement `IProcessor` to add post-capture processing
 4. **Custom File Formats**: Implement `IFileFormatHandler` to support additional image formats
-   - Supports save to stream, load from stream, and load drawable from stream actions
-   - Register supported file extensions for each action
+   - Three action types: SaveToStream, LoadFromStream, LoadDrawableFromStream
+   - Each handler registers which file extensions it supports for each action type
 
 ## Build Configuration
 

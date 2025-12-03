@@ -23,6 +23,8 @@ About this repository
 ---------------------
 This is the development branch is for Greenshot 1.3, which has been first released on 2025-07-14. No more features will be added in this branch.
 
+For information about the project's architecture, design patterns, and technical details, please see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 Releases
 --------
 

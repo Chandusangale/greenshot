@@ -72,6 +72,7 @@ The **Destination Pattern** is used for handling screenshot outputs through the 
 - Export information tracking
 
 ```csharp
+// Simplified interface - see IDestination.cs for complete definition
 public interface IDestination : IDisposable, IComparable
 {
     string Designation { get; }
@@ -79,6 +80,13 @@ public interface IDestination : IDisposable, IComparable
     int Priority { get; }
     Image DisplayIcon { get; }
     bool IsActive { get; }
+    bool IsDynamic { get; }
+    bool UseDynamicsOnly { get; }
+    bool IsLinkable { get; }
+    Keys EditorShortcutKeys { get; }
+    
+    IEnumerable<IDestination> DynamicDestinations();
+    ToolStripMenuItem GetMenuItem(bool addDynamics, ContextMenuStrip menu, EventHandler destinationClickHandler);
     ExportInformation ExportCapture(bool manuallyInitiated, ISurface surface, ICaptureDetails captureDetails);
 }
 ```
@@ -98,6 +106,7 @@ public interface IServiceLocator
 {
     TService GetInstance<TService>();
     IReadOnlyList<TService> GetAllInstances<TService>();
+    void AddService<TService>(IEnumerable<TService> services);
     void AddService<TService>(params TService[] services);
 }
 ```

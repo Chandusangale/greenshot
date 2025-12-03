@@ -252,15 +252,18 @@ Configuration is handled through:
 
 Developers can extend Greenshot through:
 
-1. **Custom Plugins**: Implement `IGreenshotPlugin`
-2. **Custom Destinations**: Implement `IDestination`
-3. **Custom Processors**: Implement `IProcessor`
-4. **Custom File Formats**: Implement `IFileFormatHandler`
+1. **Custom Plugins**: Implement `IGreenshotPlugin` to add new functionality
+2. **Custom Destinations**: Implement `IDestination` to add new export targets
+3. **Custom Processors**: Implement `IProcessor` to add post-capture processing
+4. **Custom File Formats**: Implement `IFileFormatHandler` to support additional image formats
+   - Supports save to stream, load from stream, and load drawable from stream actions
+   - Register supported file extensions for each action
 
 ## Build Configuration
 
 - **Target Framework**: net472 (.NET Framework 4.7.2)
 - **Platform**: Windows (win10-x64, win10-x86, win-x64, win-x86)
+- **Minimum Windows Version**: Windows 7 or later (via .NET Framework 4.7.2 requirement)
 - **Output**: Windows Executable (WinExe)
 - **Installer**: InnoSetup-based installer
 - **Versioning**: Using Nerdbank.GitVersioning (version.json)
@@ -279,9 +282,9 @@ Developers can extend Greenshot through:
 
 ## Security Considerations
 
-- **TLS Support**: TLS 1.2 enabled for secure communications
-- **Credential Storage**: Secure credential handling via CredentialsHelper
-- **OAuth Support**: Built-in OAuth implementation for cloud services
+- **TLS Support**: TLS 1.2 enabled for secure communications with cloud services
+- **Credential Storage**: Credentials are securely handled via `CredentialsHelper` which uses Windows Credential Manager for secure storage
+- **OAuth Support**: Built-in OAuth implementation for cloud services (Imgur, Dropbox, Flickr, etc.)
 
 ## Testing Strategy
 

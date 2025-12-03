@@ -91,8 +91,6 @@ public interface IDestination : IDisposable, IComparable
 }
 ```
 
-**Note**: `GetMenuItem` creates and returns a menu item that represents this destination in the UI.
-
 ### 3. Service Locator Pattern
 
 Greenshot uses a simple **Service Locator** pattern for dependency management.
